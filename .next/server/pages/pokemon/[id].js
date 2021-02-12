@@ -152,20 +152,19 @@ async function getStaticProps({
   };
 }
 async function getStaticPaths() {
+  const pokemons = await fetch('https://pokeapi.co/api/v2/pokedex/2/').then(respostaDoServer => {
+    if (respostaDoServer.ok) {
+      return respostaDoServer.json();
+    }
+  }).then(respostaEmObjeto => {
+    return respostaEmObjeto.pokemon_entries;
+  });
   return {
-    paths: [{
+    paths: pokemons.map(pokemon => ({
       params: {
-        id: '1'
+        id: pokemon.entry_number.toString()
       }
-    }, {
-      params: {
-        id: '2'
-      }
-    }, {
-      params: {
-        id: '3'
-      }
-    }],
+    })),
     fallback: false
   };
 }

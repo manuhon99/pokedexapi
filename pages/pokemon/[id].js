@@ -40,24 +40,21 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  return {
-    paths: [
-      {
-        params: {
-          id: '1',
-        },
-      },
-      {
-        params: {
-          id: '2',
-        },
-      },
-      {
-        params: {
-          id: '3',
-        },
-      },
-    ],
-    fallback: false,
-  };
-}
+    const pokemons = await fetch('https://pokeapi.co/api/v2/pokedex/2/')
+      .then((respostaDoServer) => {
+        if(respostaDoServer.ok) {
+          return respostaDoServer.json();
+        }
+      })
+      .then((respostaEmObjeto) => {
+        return respostaEmObjeto.pokemon_entries;
+      })
+    return {
+    paths: pokemons.map((pokemon) => ({
+      params:{
+        id:pokemon.entry_number.toString(),
+      }
+    })),
+    fallback:false,
+   }
+  }

@@ -138,12 +138,12 @@ function Pokemon({
 async function getStaticProps({
   params
 }) {
-  const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`).then(respostaDoServer => {
+  const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}/?limit=20&offset=20`).then(respostaDoServer => {
     if (respostaDoServer.ok) {
       return respostaDoServer.json();
     }
 
-    return JSON.parse(JSON.stringify(respostaDoServer));
+    const pokemon = fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
   }).then(respostaEmObjeto => respostaEmObjeto);
   return {
     props: {

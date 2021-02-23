@@ -1,8 +1,9 @@
 {
   "/": "pages/index.js",
   "/pokemon/[id]": "pages/pokemon/[id].js",
-  "/sobre": "pages/sobre.js",
+  "/sobre": "pages/sobre.html",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
 }

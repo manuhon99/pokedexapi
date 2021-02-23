@@ -28,9 +28,9 @@ export default function Home(props) {
   return (
     <div>
       <div>
-      <Head>
-      <link rel="icon" sizes="16x16" href="../static/favicon.ico" />
-      </Head>
+        <Head>
+          <link rel="icon" sizes="16x16" href="../static/favicon.ico" />
+        </Head>
       </div>
       Pokédex
       <ul>

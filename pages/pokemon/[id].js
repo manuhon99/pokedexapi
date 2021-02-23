@@ -27,8 +27,8 @@ export async function getStaticProps({ params }) {
       if (respostaDoServer.ok) {
         return respostaDoServer.json();
       }
+      return  JSON.parse(JSON.stringify(respostaDoServer))
 
-      throw new Error('Deu problema');
     })
     .then((respostaEmObjeto) => respostaEmObjeto);
 
@@ -40,7 +40,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const pokemons = await fetch('https://pokeapi.co/api/v2/pokedex/2/')
+    const pokemons = await fetch('https://pokeapi.co/api/v2/pokedex/3/')
       .then((respostaDoServer) => {
         if(respostaDoServer.ok) {
           return respostaDoServer.json();

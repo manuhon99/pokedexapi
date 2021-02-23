@@ -1,5 +1,7 @@
   
 import React from 'react';
+import Head from 'next/head';
+
 import Link from 'next/link';
 
 export async function getStaticProps() {
@@ -25,7 +27,10 @@ export default function Home(props) {
 
   return (
     <div>
-      Pokédex - DevSoutinho - Da um like :)
+      <Head>
+      <link rel="shortcut icon" href="../..static/fav.ico" />
+      </Head>
+      Pokédex
       <ul>
         <li>
           <Link href="/">
